@@ -57,7 +57,7 @@ const Cart = () => {
   const footer = {
     label: 'Total',
     value: cart.reduce((accumulator, object) => {
-      return (accumulator + (object.price * object.qty)).toFixed(2)
+      return (accumulator + (object.price * object.qty))
     }, 0)
   }
 
