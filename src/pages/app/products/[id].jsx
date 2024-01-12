@@ -5,7 +5,7 @@ import { itemsForSearchTest } from '@/constants'
 import { CartContext } from '@/contexts/CartContext/context'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import { useContext, useEffect, useState } from 'react'
+import { useContext } from 'react'
 
 export default function Detail () {
   const router = useRouter()
