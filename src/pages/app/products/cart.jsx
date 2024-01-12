@@ -40,9 +40,8 @@ const Cart = () => {
     },
     {
       header: 'quantity',
-      value: (item) => {
+      value: (item) =>
         <input type='number' min={1} className='w-20 border-2 border-slate-300 rounded p-2' value={item.qty} onChange={(e) => onQtyChange(item, e.target.value)} />
-      }
     },
     {
       header: 'Sub Total',

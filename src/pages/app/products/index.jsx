@@ -5,6 +5,7 @@ import useDebounce from '@/utils/debounce'
 import { IconSearch } from '@tabler/icons-react'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
+
 const Home = () => {
   const router = useRouter()
   const [search, setSearch] = useState('')
