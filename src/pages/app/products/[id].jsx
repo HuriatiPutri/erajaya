@@ -1,15 +1,15 @@
-import React, { useContext, useEffect } from 'react'
 import { ProductCard } from '@/component/card/ProductCard'
+import Button from '@/component/elements/button/Button'
 import { Header } from '@/component/elements/header'
 import { itemsForSearchTest } from '@/constants'
 import { CartContext } from '@/contexts/CartContext/context'
-import { useRouter } from 'next/router'
 import Image from 'next/image'
-import Button from '@/component/elements/button/Button'
+import { useRouter } from 'next/router'
+import { useContext } from 'react'
 
 export default function Detail () {
   const router = useRouter()
-  const { cart, onAddToCart } = useContext(CartContext)
+  const { onAddToCart, alert } = useContext(CartContext)
   const { id } = router.query
   const data = itemsForSearchTest.find(item => item.id === parseInt(id))
   const handledDetailProduct = (item) => {
@@ -19,9 +19,6 @@ export default function Detail () {
       query: { id: item.id }
     })
   }
-  useEffect(() => {
-    console.log(cart)
-  }, [cart])
 
   return (
     <div>
@@ -38,6 +35,14 @@ export default function Detail () {
             <p className='text-gray-400'>stock:{data?.quantity} pcs</p>
             <br />
             <Button onClick={() => onAddToCart(data)}>Add to Cart</Button>
+
+            {
+              alert?.isOpen && (
+                <div className='bg-green-200 p-2 mt-3 rounded-lg'>
+                  <span>{alert.message}</span>
+                </div>
+              )
+            }
           </div>
         </div>
         <div>

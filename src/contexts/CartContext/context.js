@@ -1,10 +1,11 @@
-import { createContext, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 
 export const CartContext = createContext()
 
 export default function CartContextProvider ({ children }) {
   const [value, setValue] = useState([])
+  const [toast, setToast] = useState({ isOpen: false, message: '' })
 
   const onDeleteCart = (item) => {
     const newCart = value.filter((cartItem) => cartItem.id !== item.id)
@@ -13,14 +14,23 @@ export default function CartContextProvider ({ children }) {
 
   const onAddToCart = (data) => {
     value.find(item => item.id === data.id) ? value.find(item => item.id === data.id).qty += 1 : setValue([...value, data])
+    setToast({ isOpen: true, message: 'Successfully added to cart' })
   }
 
   const initialValue = {
     cart: value,
     setCart: setValue,
     onDeleteCart,
-    onAddToCart
+    onAddToCart,
+    alert: toast
   }
+
+  useEffect(() => {
+    toast.isOpen &&
+      setTimeout(function () {
+        setToast({ isOpen: false, message: '' })
+      }, 2000)
+  }, [toast])
 
   return <CartContext.Provider value={initialValue}>{children}</CartContext.Provider>
 }
