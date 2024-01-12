@@ -13,7 +13,6 @@ const Home = () => {
   const debouncedSearch = useDebounce(search, 500)
   const [data, setData] = useState(itemsForSearchTest)
 
-  console.log('item', itemsForSearchTest)
   useEffect(() => {
     if (!debouncedSearch) {
       setData(itemsForSearchTest)
@@ -31,7 +30,6 @@ const Home = () => {
   }
 
   const handledDetailProduct = (item) => {
-    console.log(item)
     router.push({
       pathname: '/app/products/[id]',
       query: { id: item.id }

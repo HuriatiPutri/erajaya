@@ -9,27 +9,16 @@ import { useContext, useEffect, useState } from 'react'
 
 export default function Detail () {
   const router = useRouter()
-  const { cart, onAddToCart, alert } = useContext(CartContext)
-  const [disabled, setDisabled] = useState(false)
+  const { onAddToCart, alert } = useContext(CartContext)
   const { id } = router.query
 
   const data = itemsForSearchTest.find(item => item.id === parseInt(id))
-  const selectedCart = cart.find(item => item.id === parseInt(id))
   const handledDetailProduct = (item) => {
-    console.log(item)
     router.push({
       pathname: '/app/products/[id]',
       query: { id: item.id }
     })
   }
-
-  useEffect(() => {
-    if (data?.quantity <= selectedCart?.qty) {
-      setDisabled(true)
-      console.log('disabled')
-    }
-    console.log('check', data?.quantity, selectedCart?.qty)
-  }, [data])
 
   return (
     <div>
@@ -45,7 +34,7 @@ export default function Detail () {
             <p className='text-2xl mt-10'>${data?.price}</p>
             <p className='text-gray-400'>stock:{data?.quantity} pcs</p>
             <br />
-            <Button disabled={disabled} onClick={() => onAddToCart(data)}>Add to Cart</Button>
+            <Button onClick={() => onAddToCart(data)}>Add to Cart</Button>
 
             {
               alert?.isOpen && (
