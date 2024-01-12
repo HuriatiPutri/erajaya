@@ -6,6 +6,6 @@ export default function Home () {
   const router = new useRouter()
 
   useEffect(() => {
-    router.push('/app/productsS')
+    router.push('/app/products')
   }, [])
 }
