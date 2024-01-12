@@ -46,7 +46,7 @@ const Cart = () => {
     },
     {
       header: 'Sub Total',
-      value: ({ price, qty }) => `$${price * qty}`
+      value: ({ price, qty }) => `$${(price * qty).toFixed(2)}`
     },
     {
       header: 'Action',
@@ -57,7 +57,7 @@ const Cart = () => {
   const footer = {
     label: 'Total',
     value: cart.reduce((accumulator, object) => {
-      return accumulator + (object.price * object.qty)
+      return (accumulator + (object.price * object.qty)).toFixed(2)
     }, 0)
   }
 
