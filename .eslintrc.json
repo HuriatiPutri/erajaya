@@ -1,3 +1,19 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "eslint:recommended",
+    "@typescript-eslint/recommended",
+    "react-hooks/recommended"
+  ],
+  "ignorePatterns": ["dist", ".eslintrc.json"],
+  "rules": {
+    "react-refresh/only-export-components": [
+      "warn",
+      { "allowConstantExport": true },
+    ],
+    "semi": ["error", "always"],
+    "no-console": "error",
+    "quotes": ["error", "single"],
+    "indent": ["error", 2],
+    "react-hooks/exhaustive-deps": 0
+  }
 }
