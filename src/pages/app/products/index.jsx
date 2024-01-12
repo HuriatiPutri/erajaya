@@ -42,7 +42,7 @@ const Home = () => {
     <div className='p-0'>
       <Header title="Products"
         components={
-          <div className='hidden lg:flex center items-center'>
+          <div className='hidden lg:flex center items-center gap-2'>
             <input className='p-2 h-10 focus:outline-none border-2 rounded-lg border-slate-100' type="text" placeholder="Search.." onChange={(e) => setSearch(e.target.value)} />
             <Button onClick={handleSearch}><IconSearch /></Button>
           </div>
