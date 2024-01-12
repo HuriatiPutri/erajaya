@@ -1,10 +1,10 @@
-import React, { useContext, useEffect } from 'react'
 import { Table } from '@/component/elements/Table'
+import Button from '@/component/elements/button/Button'
 import { Header } from '@/component/elements/header'
 import { CartContext } from '@/contexts/CartContext/context'
-import { IconTrash } from '@tabler/icons-react'
+import { IconMinus, IconPlus, IconTrash } from '@tabler/icons-react'
 import Image from 'next/image'
-import Button from '@/component/elements/button/Button'
+import { useContext } from 'react'
 
 const Cart = () => {
   const { cart, setCart, onDeleteCart } = useContext(CartContext)
@@ -36,14 +36,10 @@ const Cart = () => {
     setCart(newCart)
   }
 
-  useEffect(() => {
-    console.log(cart)
-  }, [cart])
-
   const columns = [
     {
       header: '',
-      value: ({ imageUrl }) => <Image src={imageUrl} width={100} height={100} className='w-50'/>
+      value: ({ imageUrl, name }) => <Image alt={name} src={imageUrl} width={100} height={100} className='w-50'/>
     },
     {
       header: 'Product Name',
@@ -56,7 +52,11 @@ const Cart = () => {
     {
       header: 'quantity',
       value: (item) =>
-        <input type='number' min={1} className='w-20 border-2 border-slate-300 rounded p-2' value={item.qty} onChange={(e) => onQtyChange(item, e.target.value)} />
+        <div className='flex flex-row'>
+          <Button onClick={() => onQtyChange(item, item.qty - 1)} ><IconMinus/></Button>
+          <input type='number' min={1} className='w-20 border-2 border-slate-300 rounded p-2' value={item.qty} onChange={(e) => onQtyChange(item, e.target.value)} />
+          <Button onClick={() => onQtyChange(item, item.qty + 1)} ><IconPlus/></Button>
+        </div>
     },
     {
       header: 'Sub Total',

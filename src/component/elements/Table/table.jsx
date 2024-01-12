@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types'
 export default function Table ({ colomn, data, footer }) {
-  console.log('data', data)
   return (
     <table className="table-auto border-2">
       <thead>
@@ -13,9 +12,7 @@ export default function Table ({ colomn, data, footer }) {
         </tr>
       </thead>
       <tbody>
-        {data.length === 0 && <tr className="border border-2"><td colSpan={colomn.length} className="text-center">No data found</td></tr>}
         {data.map((item, index) => {
-          console.log('itemw', item)
           return (<TableRow colomn={colomn} item={item} index={index} key={index}/>)
         })}
       </tbody>
@@ -29,13 +26,11 @@ export default function Table ({ colomn, data, footer }) {
   )
 }
 
-export function TableRow ({ colomn, item, index }) {
-  console.log('coloumn', colomn)
+export function TableRow ({ colomn, item }) {
   return (
     <tr className="border border-2">
-      {colomn.map((citem) => {
+      {colomn.map((citem, index) => {
         const { value } = citem
-        console.log('item', item[value])
         return (
           <td key={index}> {typeof value === 'function'
             ? value(item, index)
