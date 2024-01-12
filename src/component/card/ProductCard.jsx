@@ -8,7 +8,7 @@ export function ProductCard ({ item, onClick }) {
       <div>
         <div>
           <div>
-            <Image alt={item.name} src={item.imageUrl} height={250} width={250} priority={1} />
+            <Image alt={item.name} src={item.imageUrl} height={250} width={250} priority={1} className={styles.imgFluid} />
           </div>
           <div>
             <h4 className={styles.cardTitle}>{item.name}</h4>

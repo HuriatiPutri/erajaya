@@ -38,8 +38,8 @@ const Cart = () => {
 
   const columns = [
     {
-      header: '',
-      value: ({ imageUrl, name }) => <Image alt={name} src={imageUrl} width={100} height={100} className='w-50'/>
+      header: 'Photo',
+      value: ({ imageUrl, name }) => <Image alt={name} src={imageUrl} width={100} height={100} />
     },
     {
       header: 'Product Name',
