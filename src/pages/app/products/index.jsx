@@ -48,7 +48,7 @@ const Home = () => {
           </div>
         }
       />
-      <div className='lg:hidden flex flex-row justify-center p-5 bg-blue-200 '>
+      <div className='lg:hidden flex flex-row justify-center p-5 bg-blue-200  gap-2'>
         <input className='p-2 h-10 focus:outline-none border-2 rounded-lg border-slate-100' type="text" placeholder="Search.." onChange={(e) => setSearch(e.target.value)} />
         <Button onClick={handleSearch}><IconSearch /></Button>
       </div>
