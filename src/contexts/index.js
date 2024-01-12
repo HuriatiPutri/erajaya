@@ -1,10 +1,17 @@
-import { CartContextProvider } from "./CartContext";
+import { CartContextProvider } from './CartContext'
+import PropTypes from 'prop-types'
+export default function ContextProvider ({ children }) {
+  return (
+    <CartContextProvider>
+      {children}
+    </CartContextProvider>
+  )
+}
 
-export default function ContextProvider({children}){
+ContextProvider.defaultProps = {
+  children: ''
+}
 
-    return(
-        <CartContextProvider>
-            {children}
-        </CartContextProvider>
-    )
+ContextProvider.propTypes = {
+  children: PropTypes.node
 }

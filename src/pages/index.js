@@ -1,14 +1,11 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
+import { useRouter } from 'next/router'
 import { useEffect } from 'react'
-import { useRouter } from 'next/router';
 
-const inter = Inter({ subsets: ['latin'] })
-
-export default function Home() {
-  const router = new useRouter();
+export default function Home () {
+  // eslint-disable-next-line new-cap
+  const router = new useRouter()
 
   useEffect(() => {
-    router.push('/app/products')
+    router.push('/app/productsS')
   }, [])
 }

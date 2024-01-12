@@ -9,4 +9,3 @@ export default async function Fetch (options) {
     return error
   }
 }
-s

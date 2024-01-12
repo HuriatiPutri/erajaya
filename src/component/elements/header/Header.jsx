@@ -8,7 +8,7 @@ export default function Header ({ title, components }) {
   const router = useRouter()
   const { cart } = useContext(CartContext)
   return (
-    <div className='bg-orange-500 p-2 p-1 flex flex-col justify-between'>
+    <div className='p-2 p-1 flex flex-col justify-between bg-orange-500 '>
       <div className="flex flex-row p-2 text-white" onClick={() => router.push('/app/products')}>
         <IconShoppingCart /> <h1 className="text-lg">Era Jaya Shop</h1>
       </div>

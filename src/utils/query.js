@@ -42,7 +42,7 @@ export function GetSingleData (options, id, callback) {
   return response
 }
 
-export function Mutation (options, callback) {
+export function Mutation (options, payload, callback) {
   return useMutation({
     mutationKey: options.mutationKey,
     mutationFn: async () => {
