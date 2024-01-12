@@ -58,7 +58,7 @@ const Cart = () => {
     label: 'Total',
     value: cart.reduce((accumulator, object) => {
       return (accumulator + (object.price * object.qty))
-    }, 0)
+    }, 0).toFixed(2)
   }
 
   return (
