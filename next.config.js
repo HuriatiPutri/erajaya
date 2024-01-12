@@ -7,10 +7,16 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'cdn.eraspace.com',
         port: '',
-        pathname: '/media/catalog/**',
+        pathname: '/media/catalog/**'
       },
-    ],
-  },
+      {
+        protocol: 'https',
+        hostname: 'i1.adis.ws',
+        port: '',
+        pathname: '/i/**'
+      }
+    ]
+  }
 }
 
 module.exports = nextConfig

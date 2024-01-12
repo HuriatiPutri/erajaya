@@ -1,3 +1,3 @@
-import CartContextProvider from './context';
+import CartContextProvider from './context'
 
-export { CartContextProvider };
+export { CartContextProvider }
