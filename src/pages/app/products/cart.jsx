@@ -12,9 +12,23 @@ const Cart = () => {
   const onQtyChange = (item, qty) => {
     const newCart = cart.map((cartItem) => {
       if (cartItem.id === item.id) {
-        return {
-          ...cartItem,
-          qty
+        if (qty < 1) {
+          alert('Quantity must be greater than 0')
+          return {
+            ...cartItem,
+            qty: 1
+          }
+        } else if (qty > item.quantity) {
+          alert('Quantity must be less than stock')
+          return {
+            ...cartItem,
+            qty: item.qty
+          }
+        } else {
+          return {
+            ...cartItem,
+            qty
+          }
         }
       }
       return cartItem
