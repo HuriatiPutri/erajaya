@@ -13,7 +13,7 @@ export default function CartContextProvider ({ children }) {
   }
 
   const onAddToCart = (data) => {
-    value.find(item => item.id === data.id) ? value.find(item => item.id === data.id).qty += 1 : setValue([...value, data])
+    value.find(item => item.id === data.id) ? value.find(item => item.id === data.id).qty++ : setValue([...value, data])
     setToast({ isOpen: true, message: 'Successfully added to cart' })
   }
 
