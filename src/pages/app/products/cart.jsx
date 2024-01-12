@@ -4,6 +4,7 @@ import { Header } from '@/component/elements/header'
 import { CartContext } from '@/contexts/CartContext/context'
 import { IconTrash } from '@tabler/icons-react'
 import Image from 'next/image'
+import Button from '@/component/elements/button/Button'
 
 const Cart = () => {
   const { cart, setCart, onDeleteCart } = useContext(CartContext)
@@ -49,9 +50,7 @@ const Cart = () => {
     },
     {
       header: 'Action',
-      value: (item) => <button
-        onClick={() => onDeleteCart(item)}
-        className='bg-blue-500 hover:bg-red-700 text-white px-4 py-1 rounded-lg '><IconTrash /></button>
+      value: (item) => <Button onClick={() => onDeleteCart(item)} label='Delete' color='red' ><IconTrash/></Button>
     }
   ]
 

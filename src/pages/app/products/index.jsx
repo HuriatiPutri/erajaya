@@ -1,4 +1,5 @@
 import { ProductCard } from '@/component/card/ProductCard'
+import Button from '@/component/elements/button/Button'
 import { Header } from '@/component/elements/header'
 import { itemsForSearchTest } from '@/constants'
 import useDebounce from '@/utils/debounce'
@@ -43,17 +44,13 @@ const Home = () => {
         components={
           <div className='hidden lg:flex center items-center'>
             <input className='p-2 h-10 focus:outline-none border-2 rounded-lg border-slate-100' type="text" placeholder="Search.." onChange={(e) => setSearch(e.target.value)} />
-            <button
-              onClick={handleSearch}
-              className='bg-blue-500 hover:bg-blue-700 text-white ml-2 p-2 rounded-lg'><IconSearch /></button>
+            <Button onClick={handleSearch}><IconSearch /></Button>
           </div>
         }
       />
       <div className='lg:hidden flex flex-row justify-center p-5 bg-blue-200 '>
         <input className='p-2 h-10 focus:outline-none border-2 rounded-lg border-slate-100' type="text" placeholder="Search.." onChange={(e) => setSearch(e.target.value)} />
-        <button
-          onClick={handleSearch}
-          className='bg-blue-500 hover:bg-blue-700 text-white ml-2 p-2 rounded-lg'><IconSearch /></button>
+        <Button onClick={handleSearch}><IconSearch /></Button>
       </div>
       <div className="p-5 grid grid-flow-row-dense gap-2 mt-5 md:grid-cols-5 sm:grid-cols-2 place-items-center">
         {data.length === 0 && <p className='text-center'>No data found</p>}

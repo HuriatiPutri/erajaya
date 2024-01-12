@@ -5,6 +5,7 @@ import { itemsForSearchTest } from '@/constants'
 import { CartContext } from '@/contexts/CartContext/context'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
+import Button from '@/component/elements/button/Button'
 
 export default function Detail () {
   const router = useRouter()
@@ -35,10 +36,8 @@ export default function Detail () {
             <p className='text-gray-400'>{data?.description}</p>
             <p className='text-2xl mt-10'>${data?.price}</p>
             <p className='text-gray-400'>stock:{data?.quantity} pcs</p>
-            <button
-              className='bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-lg mt-10'
-              onClick={() => onAddToCart(data)}
-            >Add to cart</button>
+            <br />
+            <Button onClick={() => onAddToCart(data)}>Add to Cart</Button>
           </div>
         </div>
         <div>
