@@ -3,9 +3,11 @@ import { CartItem } from '@/component/cartItem/cartItem';
 import { Table } from '@/component/elements/Table';
 import { itemsForSearchTest } from '@/constants';
 import { CartContext } from '@/contexts/CartContext/context';
-import { IconSearch, IconShoppingCart } from '@tabler/icons-react';
+import { IconSearch, IconShoppingCart, IconTrash } from '@tabler/icons-react';
 import { useRouter } from 'next/router';
 import { useContext, useEffect, useState } from 'react';
+import Image from 'next/image';
+
 const Cart = () => {
   const router = useRouter();
   const { cart, setCart } = useContext(CartContext)
@@ -26,7 +28,7 @@ const Cart = () => {
     setCart(newCart);
   }
 
-  const onQtyChange = (item) => {
+  const onQtyChange = (item, qty) => {
     const newCart = cart.map((cartItem) => {
       if (cartItem.id === item.id) {
         return {
@@ -43,6 +45,41 @@ const Cart = () => {
     console.log(cart)
   },[cart])
 
+  const columns = [
+    {
+      header: '',
+      value: ({imageUrl}) => <img src={imageUrl} width={100} height={100} className='w-50'/> ,
+    },
+    {
+      header: 'Product Name',
+      value: 'name'
+    },
+    {
+      header: 'Price',
+      value: ({price}) => `$${price}`
+    },
+    {
+      header: 'quantity',
+      value: (item) => <input type='number' value={item.quantity} onChange={(e) => onQtyChange(item, e.target.value)} />
+    },
+    {
+      header: 'Sub Total',
+      value: ({ price, quantity }) => `$${price * quantity}` 
+    },
+    {
+      header: 'Action',
+      value: (item) => <button
+      onClick={() => onDelete(item)}
+      className='bg-blue-500 hover:bg-red-700 text-white px-4 py-1 rounded-lg '><IconTrash /></button> 
+    }
+  ];
+
+
+  const renderItem = () => {
+    return(
+      <div>Item</div>
+    )
+  }
   return (
     <div className='p-5'>
       <div className='flex flex-row justify-between'>
@@ -51,13 +88,10 @@ const Cart = () => {
           <IconShoppingCart /> {cart.length}
         </button>
       </div>
-      <Table colomn={['', 'Nama Product', 'Harga', 'Jumlah', 'SubTotal']} 
-      data={cart} 
-      onDelete={onDelete} 
-      onQtyChange={onQtyChange} 
-      qty={qty} 
-      setQty={setQty} 
-      handledDetailProduct={handledDetailProduct} />
+      <Table
+        colomn={columns}
+        data={cart}
+        />
       
       {/* <table className='border-collapse border border-slate-400 table-fixed md:table-fixed'>
       <thead>
