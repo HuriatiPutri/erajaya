@@ -24,6 +24,7 @@ const Home = () => {
       if (item.name.toLowerCase().includes(debouncedSearch.toLowerCase())) {
         return item
       }
+      return null
     })
     setData(searchItem)
   }

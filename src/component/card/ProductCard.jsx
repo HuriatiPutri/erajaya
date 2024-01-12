@@ -2,9 +2,9 @@ import Image from 'next/image'
 import styles from './styles.module.scss'
 import PropTypes from 'prop-types'
 
-export function ProductCard ({ item, key, onClick }) {
+export function ProductCard ({ item, onClick }) {
   return (
-    <div className={styles.card} key={key} onClick={onClick}>
+    <div className={styles.card} key={item.id} onClick={onClick}>
       <div>
         <div>
           <div>
@@ -30,11 +30,9 @@ export function ProductCard ({ item, key, onClick }) {
 
 ProductCard.defaultProps = {
   item: {},
-  key: 0,
   onClick: () => {}
 }
 ProductCard.propTypes = {
   item: PropTypes.object,
-  key: PropTypes.number,
   onClick: PropTypes.func
 }
